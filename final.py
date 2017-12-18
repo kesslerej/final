@@ -29,22 +29,22 @@ def change_currency(amount, currency, new_currency):
                 pound_conversion = .75
                 bitcoin_conversion = 0.000058
 
-                return (amount * euro_conversion, 'euros', \
+                return amount * euro_conversion, 'euros', \
                         amount * pound_conversion, 'Pounds', \
-                        amount * bitcoin_conversion, 'bitcoins')
+                        amount * bitcoin_conversion, 'bitcoins'
 
         elif currency == "euro":
             if new_currency == "dollar":
-                conversion = 1.18
-                return amount * conversion
+                dollar_conversion = 1.18
+                return amount * dollar_conversion
 
             elif new_currency == "pound":
-                conversion = 0.88
-                return amount * conversion
+                pound_conversion = 0.88
+                return amount * pound_conversion
 
             elif new_currency == "bitcoin": 
-                conversion = 0.000068
-                return amount * conversion
+                bitcoin_conversion = 0.000068
+                return amount * bitcoin_conversion
  
             elif new_currency == "all":
                 dollar_conversion = 1.18
@@ -57,16 +57,16 @@ def change_currency(amount, currency, new_currency):
 
         elif currency == "pound":
             if new_currency == "dollar":
-                conversion = 1.34
-                return amount * conversion
+                dollar_conversion = 1.34
+                return amount * dollar_conversion
 
             elif new_currency == "euro":
-                conversion = 1.14
-                return amount * conversion
+                euro_conversion = 1.14
+                return amount * euro_conversion
 
             elif new_currency == "bitcoin": 
-                conversion = 0.000078
-                return amount * conversion
+                bitocin_conversion = 0.000078
+                return amount * bitcoin_conversion
 
             elif new_currency == "all":
                 dollar_conversion = 1.34
@@ -79,16 +79,16 @@ def change_currency(amount, currency, new_currency):
 
         elif currency == "bitcoin":
             if new_currency == "dollar":
-                conversion = 17241.24
-                return amount * conversion
+                dollar_conversion = 17241.24
+                return amount * dollar_conversion
 
             elif new_currency == "euro":
-                conversion = 14656.77
-                return amount * conversion
+                euro_conversion = 14656.77
+                return amount * euro_conversion
 
             elif new_currency == "pound": 
-                conversion = 12899.89
-                return amount * conversion
+                pound_conversion = 12899.89
+                return amount * pound_conversion
 
             elif new_currency == "all":
                 dollar_conversion = 17241.24
@@ -98,9 +98,6 @@ def change_currency(amount, currency, new_currency):
                 return (amount * dollar_conversion, 'Dollars', \
                         amount * euro_conversion, 'euros', \
                         amount * pound_conversion, 'Pounds')
-
-
-
 
 
 
