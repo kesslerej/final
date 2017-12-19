@@ -7,22 +7,25 @@ def change_currency(amount, currency, new_currency):
         sorry = "Im sorry, that currency doesn't seem to be in our system"
         return sorry
     if currency not in currencies:
-        sorry = "Im sorry, that currency doesn't seem to be in our system"
+        sorry = "Im sorry, '%s' doesn't seem to be in our system." % currency
+        return sorry
+    if amount != int:
+        sorry = "Im afraid you inserted '%s' instead of a number." % amount
         return sorry
         
     for n in range(0, len(currencies)):
         if currency == "dollar":
             if new_currency == "euro":
                 euro_conversion = .85
-                return amount * euro_conversion
+                return amount * euro_conversion, new_currency + "s"
 
             elif new_currency == "pound":
                 pound_conversion = .75
-                return amount * pound_conversion
+                return amount * pound_conversion, new_currency + "s"
 
             elif new_currency == "bitcoin": 
                 bitcoin_conversion = 0.000058
-                return amount * bitcoin_conversion
+                return amount * bitcoin_conversion, new_currency + "s"
 
             elif new_currency == "all":
                 euro_conversion = .85
@@ -36,15 +39,15 @@ def change_currency(amount, currency, new_currency):
         elif currency == "euro":
             if new_currency == "dollar":
                 dollar_conversion = 1.18
-                return amount * dollar_conversion
+                return amount * dollar_conversion, new_currency + "s"
 
             elif new_currency == "pound":
                 pound_conversion = 0.88
-                return amount * pound_conversion
+                return amount * pound_conversion, new_currency + "s"
 
             elif new_currency == "bitcoin": 
                 bitcoin_conversion = 0.000068
-                return amount * bitcoin_conversion
+                return amount * bitcoin_conversion, new_currency + "s"
  
             elif new_currency == "all":
                 dollar_conversion = 1.18
@@ -58,15 +61,15 @@ def change_currency(amount, currency, new_currency):
         elif currency == "pound":
             if new_currency == "dollar":
                 dollar_conversion = 1.34
-                return amount * dollar_conversion
+                return amount * dollar_conversion, new_currency + "s"
 
             elif new_currency == "euro":
                 euro_conversion = 1.14
-                return amount * euro_conversion
+                return amount * euro_conversion, new_currency + "s"
 
             elif new_currency == "bitcoin": 
                 bitocin_conversion = 0.000078
-                return amount * bitcoin_conversion
+                return amount * bitcoin_conversion, new_currency + "s"
 
             elif new_currency == "all":
                 dollar_conversion = 1.34
@@ -80,29 +83,29 @@ def change_currency(amount, currency, new_currency):
         elif currency == "bitcoin":
             if new_currency == "dollar":
                 dollar_conversion = 17241.24
-                return amount * dollar_conversion
+                return amount * dollar_conversion, new_currency + "s"
 
             elif new_currency == "euro":
                 euro_conversion = 14656.77
-                return amount * euro_conversion
+                return amount * euro_conversion, new_currency + "s"
 
             elif new_currency == "pound": 
                 pound_conversion = 12899.89
-                return amount * pound_conversion
+                return amount * pound_conversion, new_currency + "s"
 
             elif new_currency == "all":
                 dollar_conversion = 17241.24
                 euro_conversion = 14656.77
                 pound_conversion = 12899.89
 
-                return (amount * dollar_conversion, 'Dollars', \
-                        amount * euro_conversion, 'euros', \
-                        amount * pound_conversion, 'Pounds')
+                return ((amount * dollar_conversion), " dollars", \
+                        (amount * euro_conversion), " euros", \
+                        (amount * pound_conversion), " Pounds")
 
 
 
 print "How much money would you like to convert?"
-amount = float(raw_input())
+amount = raw_input()
 print ("\n")
 print "What currency do you use? Here are your options:"
 print "dollar, euro, pound, bitcoin"
@@ -112,4 +115,4 @@ print "What other currencies do you want to change it to? Here are your options:
 print "dollar, euro, pound, bitcoin, all"
 new_currency = raw_input()
 print ("\n")
-print new_currency, "-", change_currency(amount, currency, new_currency)
+print change_currency(float(amount), currency, new_currency)
